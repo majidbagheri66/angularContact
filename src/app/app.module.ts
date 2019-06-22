@@ -3,14 +3,57 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContactsComponent } from './contacts/contacts.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+
+import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
+
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatListModule} from '@angular/material/list';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContactsComponent,
+    ContactDetailComponent,
+    AddContactComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SlimLoadingBarModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatListModule,
+    MatDividerModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatSnackBarModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

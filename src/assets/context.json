@@ -1,0 +1,21 @@
+{
+    "imgsesion": "fa_closesesion.png",
+    "texthome": "volver a la home",
+    "logo": "fa_logo.png",
+    "menu": {
+      "background": "orange",
+      "link1": "ESCRITOR",
+      "link2": "MÚSICO",
+      "link3": "AYUDA ADMIN",
+      "submenu": {
+        "link1": {
+          "text1": "novelas",
+          "text2": "obras de teatro"
+        },
+        "link2": {
+          "text1": "compositor",
+          "text2": "intérprete"
+        }
+      }
+    }
+  }
