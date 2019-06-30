@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { IContact } from './contact.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContactService {
-  constructor(private http: HttpClient) {
-    this.getJSON().subscribe(data => {
-        console.log(data);
-    });
-}
+  url="http://localhost:3000/contacts";
+  constructor(private http:HttpClient) { }
+  
+  getcontacts(){
+    return this.http.get(this.url);
+  }
 
-public getJSON(): Observable<any> {
-    return this.http.get("./assets/context.json");
-}
+  addcontacts(contact:IContact){
+    return this.http.post(this.url,contact);
+  }
 }

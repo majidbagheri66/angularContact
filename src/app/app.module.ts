@@ -8,6 +8,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
 import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 
@@ -26,13 +27,16 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
+import { ContactService } from './contact.service';
+import { UpdateContactComponent } from './update-contact/update-contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactsComponent,
     ContactDetailComponent,
-    AddContactComponent
+    AddContactComponent,
+    UpdateContactComponent
   ],
   imports: [
     HttpClientModule,
@@ -53,9 +57,10 @@ import { HttpClientModule } from '@angular/common/http';
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatAutocompleteModule,
   ],
-  providers: [],
+  providers: [ContactService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

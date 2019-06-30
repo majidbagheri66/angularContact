@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { ContactService } from '../contact.service';
+import { IContact } from '../contact.interface';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-contact',
@@ -9,16 +10,17 @@ import { ContactService } from '../contact.service';
   styleUrls: ['./add-contact.component.scss']
 })
 export class AddContactComponent implements OnInit {
-  httpclient:HttpClient;
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
   thirdFormGroup:FormGroup;
-  cname:string;
-  cmail:string;
-  cphone:string;
 
-  constructor(private _formBuilder: FormBuilder, private contactservice:ContactService) {}
+  @ViewChild('cname',{static:false}) cname:ElementRef;
+  @ViewChild('cfamily',{static:false}) cfamily:ElementRef;
+  @ViewChild('cmail',{static:false}) cmail:ElementRef;
+  @ViewChild('cphone',{static:false}) cphone:ElementRef;
+
+  constructor(private _formBuilder: FormBuilder, private contactservice:ContactService,private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
     
@@ -33,10 +35,15 @@ export class AddContactComponent implements OnInit {
     });
   }
 onSaveContact(){
-  this.contactservice.getJSON().subscribe(data => {
-    console.log(data.menu.link1);
-    console.log(this.cname);
-
-});
+let contact:IContact={cid:0,name:'',family:'',email:'',phone:0};
+contact.cid=10;
+contact.name=this.cname.nativeElement.value;
+contact.family=this.cfamily.nativeElement.value;
+contact.email=this.cmail.nativeElement.value;
+contact.phone=this.cphone.nativeElement.value;
+this.contactservice.addcontacts(contact).subscribe(
+Response=>console.log(Response)
+);
+this._snackBar.open("Contact Added!","OK",{duration:3000});
 }
 }

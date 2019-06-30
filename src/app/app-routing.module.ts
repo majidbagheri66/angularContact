@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ContactsComponent } from './contacts/contacts.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
+import { UpdateContactComponent } from './update-contact/update-contact.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'addcontact',
     component: AddContactComponent
+  },
+  {
+    path: 'updatecontact',
+    component: UpdateContactComponent
   }
 ];
 
