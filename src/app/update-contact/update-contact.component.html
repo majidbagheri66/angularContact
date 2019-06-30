@@ -3,8 +3,8 @@
     <mat-form-field class="example-full-width">
       <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let contact of filteredContact | async" [value]="contact.name">
-          {{contact.name}}{{contact.family}}
+        <mat-option *ngFor="let contact of filteredContact | async" [value]="contact">
+          {{contact.name}} {{contact.family}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>

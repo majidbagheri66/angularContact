@@ -44,8 +44,8 @@ export class UpdateContactComponent implements OnInit {
     this.selectedContact = contact;
   }
 
-  displayFn(user?: IContact): string | undefined {
-    return user ? user.name : undefined;
+  displayFn(contact?: IContact): string | undefined {
+    return contact ? contact.name +" "+ contact.family : undefined;
   }
 
   private _filter(name: string): IContact[] {
