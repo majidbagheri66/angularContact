@@ -29,6 +29,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './contact.service';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
+import { DeleteContactComponent } from './delete-contact/delete-contact.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UpdateContactComponent } from './update-contact/update-contact.componen
     ContactsComponent,
     ContactDetailComponent,
     AddContactComponent,
-    UpdateContactComponent
+    UpdateContactComponent,
+    DeleteContactComponent
   ],
   imports: [
     HttpClientModule,

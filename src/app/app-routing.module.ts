@@ -4,6 +4,7 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
+import { DeleteContactComponent } from './delete-contact/delete-contact.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'updatecontact',
     component: UpdateContactComponent
+  },
+  {
+    path: 'deletecontact',
+    component: DeleteContactComponent
   }
 ];
 

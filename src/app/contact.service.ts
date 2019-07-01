@@ -16,4 +16,7 @@ export class ContactService {
   addcontacts(contact:IContact){
     return this.http.post(this.url,contact);
   }
+  updatecontact(contact:IContact,id:number){
+    return this.http.patch(this.url+"/"+id,contact)
+  }
 }

@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../contact.service';
 import { IContact } from '../contact.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material';
 
 @Component({
   selector: 'app-update-contact',
@@ -17,6 +17,13 @@ export class UpdateContactComponent implements OnInit {
   selectedContact: IContact;
   myControl = new FormControl();
   filteredContact: Observable<string[]>;
+  c_name: string;
+  c_family:string;
+  c_email:string;
+  c_id:number;
+  c_phone:number;
+  c_cid:number;
+  isselected:boolean;
 
   constructor(private contactservice: ContactService, private _snackBar: MatSnackBar) { }
 
@@ -39,19 +46,40 @@ export class UpdateContactComponent implements OnInit {
       }
     );
   }
-  
-  onSelect(contact: IContact): void {
-    this.selectedContact = contact;
-  }
 
   displayFn(contact?: IContact): string | undefined {
-    return contact ? contact.name +" "+ contact.family : undefined;
+    return  contact ? contact.name + " " + contact.family : undefined;
   }
-
+  
   private _filter(name: string): IContact[] {
-    const filterValue = name.toLowerCase();
-
+        const filterValue = name.toLowerCase();
     return this.contactArray.filter(contact => contact.name.toLowerCase().indexOf(filterValue) === 0);
   }
+  onSelect(event: MatAutocompleteSelectedEvent){
+   this.c_name= event.option.value.name;
+   this.c_family=event.option.value.family;
+   this.c_email= event.option.value.email;
+   this.c_phone=event.option.value.phone;
+   this.isselected= event.option.selected;
+   this.c_id=event.option.value.id;
+   this.c_cid=event.option.value.cid;
+  }
 
+  patchContact(){
+    let id:number=this.c_id;
+    let contact:IContact={cid:0,name:'',family:'',email:'',phone:0};
+    contact.cid=this.c_cid;
+    contact.name=this.c_name;
+    contact.family=this.c_family;
+    contact.email=this.c_email;
+    contact.phone=this.c_phone;
+    this.contactservice.updatecontact(contact,id).subscribe(
+      Response=>console.log(Response)
+    );
+    this._snackBar.open("Contact Updated!","OK",{duration:3000});
+    setTimeout(() => {
+      location.reload();
+    }, 3001);
+    
+  }
 }

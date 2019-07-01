@@ -1,12 +1,50 @@
 <mat-card>
   <form class="example-form">
     <mat-form-field class="example-full-width">
-      <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <input type="text" placeholder="Please Select Contact..." aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='onSelect($event)'>
         <mat-option *ngFor="let contact of filteredContact | async" [value]="contact">
           {{contact.name}} {{contact.family}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
+  </form>
+  <br>
+  <mat-divider>
+  </mat-divider>
+  <br>
+  <form *ngIf="isselected">
+      <table style="width:100%">
+          <tr>
+            <td>
+              <mat-form-field>
+              <input matInput placeholder="Contact Name" [(ngModel)]="c_name" [ngModelOptions]="{standalone: true}">
+            </mat-form-field>
+          </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Contact Family" [(ngModel)]="c_family" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+            </td> 
+          </tr>
+          <tr>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Contact Email" type="email" [(ngModel)]="c_email" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Contact Phone" type="tel" [(ngModel)]="c_phone" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+            </td> 
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <button mat-button (click)="patchContact()">Update</button>
+            </td>
+          </tr>
+        </table>
   </form>
 </mat-card>
