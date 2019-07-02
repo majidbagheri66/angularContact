@@ -28,6 +28,7 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ContactService } from './contact.service';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
 import { DeleteContactComponent, DialogContentExampleDialog } from './delete-contact/delete-contact.component';
@@ -65,7 +66,10 @@ import { DeleteContactComponent, DialogContentExampleDialog } from './delete-con
     MatAutocompleteModule,
     MatDialogModule
   ],
-  providers: [ContactService],
+  providers: [ContactService, {
+    provide: STEPPER_GLOBAL_OPTIONS,
+    useValue: { showError: true }
+  }],
   bootstrap: [AppComponent],
   entryComponents: [DeleteContactComponent, DialogContentExampleDialog]
 })

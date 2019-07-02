@@ -1,25 +1,27 @@
 
-  <mat-vertical-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
+  <mat-vertical-stepper linear #stepper>
+    <mat-step [stepControl]="firstFormGroup" errorMessage="First name And Last name is required.">
       <form [formGroup]="firstFormGroup">
         <ng-template matStepLabel>Fill out your name</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="First name" #cname formControlName="firstCtrl" required>
+        <mat-form-field hintLabel="Max 20 characters">
+          <input matInput maxlength="20" placeholder="First name" type="text" #cname formControlName="nameCtrl" required>
+          <mat-hint align="end">{{cname.value?.length || 0}}/20</mat-hint>
         </mat-form-field>
         <br>
-        <mat-form-field>
-          <input matInput placeholder="Last name" #cfamily formControlName="firstCtrl" required>
+        <mat-form-field hintLabel="Max 30 characters">
+          <input matInput maxlength="30" placeholder="Last name" type="text" #cfamily formControlName="familyCtrl" required>
+          <mat-hint align="end">{{cfamily.value?.length || 0}}/30</mat-hint>
         </mat-form-field>
         <div>
           <button mat-button matStepperNext>Next</button>
         </div>
       </form>
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
+    <mat-step [stepControl]="secondFormGroup" errorMessage="Email is required.">
       <form [formGroup]="secondFormGroup">
         <ng-template matStepLabel>Fill out your Email</ng-template>
         <mat-form-field>
-          <input matInput placeholder="Email" type="email" #cmail formControlName="secondCtrl" required>
+          <input matInput placeholder="Email" type="email" #cmail formControlName="emailCtrl" required>
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
@@ -27,11 +29,11 @@
         </div>
       </form>
     </mat-step>
-  <mat-step [stepControl]="thirdFormGroup">
+  <mat-step [stepControl]="thirdFormGroup" errorMessage="Phone Number is required.">
     <form [formGroup]="thirdFormGroup">
       <ng-template matStepLabel>Fill out your Phone Number</ng-template>
       <mat-form-field>
-        <input matInput placeholder="Phone" type="number" #cphone formControlName="thirdCtrl" required>
+        <input matInput placeholder="Phone" minlength="10" type="number" #cphone formControlName="phoneCtrl" required>
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>

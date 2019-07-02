@@ -24,4 +24,8 @@ Response=>this.contactArray=Response
     this.selectedContact = contact;
   }
 
+  test(){
+    alert("ok");
+  }
+
 }

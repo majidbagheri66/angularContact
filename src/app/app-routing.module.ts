@@ -12,10 +12,6 @@ const routes: Routes = [
     component: ContactsComponent
   },
   {
-    path: 'details',
-    component: ContactDetailComponent
-  },
-  {
     path: '',
     component: ContactsComponent
   },

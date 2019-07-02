@@ -6,19 +6,7 @@
   <div><span>Lastname: </span>{{contact.family}}</div>
   <div><span>Email: </span>{{contact.email}}</div>
   <div><span>Phone: </span>{{contact.phone}}</div>
-  
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Contact Name" [value]="contact.name"  (input)="contact.name = $event.target.value" type="text">
-      </mat-form-field>
   </div>
-  
-  <div style="margin-left: 30px">
-<br>
-      <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-          <mat-button-toggle value="bold" (click)="addContact()">Insert</mat-button-toggle>
-          <mat-button-toggle value="italic" (click)="deleteContact()">Delete</mat-button-toggle>
-          <mat-button-toggle value="underline">Update</mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
+
   
   

@@ -10,10 +10,11 @@ import {MatSnackBar} from '@angular/material/snack-bar';
   styleUrls: ['./add-contact.component.scss']
 })
 export class AddContactComponent implements OnInit {
+  regexpEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
   isLinear = false;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  thirdFormGroup:FormGroup;
+  thirdFormGroup: FormGroup;
 
   @ViewChild('cname',{static:false}) cname:ElementRef;
   @ViewChild('cfamily',{static:false}) cfamily:ElementRef;
@@ -25,13 +26,28 @@ export class AddContactComponent implements OnInit {
   ngOnInit() {
     
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      nameCtrl: ['', Validators.compose([
+        Validators.required, 
+        Validators.maxLength(20),
+        Validators.minLength(3)
+      ])],
+      familyCtrl: ['', Validators.compose([
+        Validators.required, 
+        Validators.maxLength(30),
+        Validators.minLength(5)
+      ])]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      emailCtrl: ['', Validators.compose([
+        Validators.required, 
+        Validators.pattern(this.regexpEmail)
+      ])]
     });
     this.thirdFormGroup = this._formBuilder.group({
-      thirdCtrl: ['', Validators.required]
+      phoneCtrl: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(10000000000)
+      ])]
     });
   }
 onSaveContact(){
@@ -46,4 +62,5 @@ Response=>console.log(Response)
 );
 this._snackBar.open("Contact Added!","OK",{duration:3000});
 }
+
 }

@@ -1,14 +1,22 @@
-<h2 class="mat-h2">Contacts List</h2>
 
-<mat-card style="width: 30%">
-  <mat-action-list>
-    <button mat-list-item *ngFor="let contact of contactArray"
-    [class.selected]="contact === selectedContact"
-    (click)="onSelect(contact)"> {{contact.name}} {{contact.family}}
-    <mat-divider></mat-divider>
-  </button>
-  </mat-action-list>
-</mat-card>
+  <table style="width:100%">
+    <tr>
+      <td>
+        <h2 class="mat-h2">Contacts List</h2>
 
-
-  <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+        <mat-card style="width: 300px">
+          <mat-action-list>
+            <button mat-list-item *ngFor="let contact of contactArray"
+            [class.selected]="contact === selectedContact"
+            (click)="onSelect(contact)"> {{contact.name}} {{contact.family}}
+            <mat-divider></mat-divider>
+          </button>
+          </mat-action-list>
+        </mat-card>
+        
+      </td>
+      <td>
+        <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+      </td>
+    </tr>
+  </table>
