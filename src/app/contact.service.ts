@@ -19,4 +19,7 @@ export class ContactService {
   updatecontact(contact:IContact,id:number){
     return this.http.patch(this.url+"/"+id,contact)
   }
+  deletecontact(id:number){
+    return this.http.delete(this.url+"/"+id);
+  }
 }

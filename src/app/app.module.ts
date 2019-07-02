@@ -23,13 +23,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 import { AddContactComponent } from './add-contact/add-contact.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatStepperModule} from '@angular/material/stepper';
 import { HttpClientModule } from '@angular/common/http';
 import { ContactService } from './contact.service';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
-import { DeleteContactComponent } from './delete-contact/delete-contact.component';
+import { DeleteContactComponent, DialogContentExampleDialog } from './delete-contact/delete-contact.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DeleteContactComponent } from './delete-contact/delete-contact.componen
     ContactDetailComponent,
     AddContactComponent,
     UpdateContactComponent,
-    DeleteContactComponent
+    DeleteContactComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     HttpClientModule,
@@ -61,8 +63,10 @@ import { DeleteContactComponent } from './delete-contact/delete-contact.componen
     MatSnackBarModule,
     MatStepperModule,
     MatAutocompleteModule,
+    MatDialogModule
   ],
   providers: [ContactService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DeleteContactComponent, DialogContentExampleDialog]
 })
 export class AppModule { }

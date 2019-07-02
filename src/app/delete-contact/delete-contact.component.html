@@ -1,3 +1,44 @@
-<p>
-  delete-contact works!
-</p>
+<mat-card>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Please Select Contact..." aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='onSelect($event)'>
+          <mat-option *ngFor="let contact of filteredContact | async" [value]="contact">
+            {{contact.name}} {{contact.family}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+    <br>
+    <mat-divider>
+    </mat-divider>
+    <br>
+    <form *ngIf="isselected">
+        <table style="width:100%">
+            <tr>
+              <td>
+                  <label>Contact Name: <b>{{c_name}}</b></label>
+            </td>
+              <td>
+                    <label>Contact Family: <b>{{c_family}}</b></label>
+              </td> 
+            </tr>
+            <tr>
+              <td>
+                    <label>Contact Email: <b>{{c_email}}</b></label>
+              </td>
+              <td>
+                  <label>Contact Phone: <b>{{c_phone}}</b></label>
+              </td> 
+            </tr>
+            <tr>
+              <td></td>
+              <td>
+                <br>
+                <button mat-raised-button (click)="openDialog()">Delete</button>
+              </td>
+            </tr>
+          </table>
+    </form>
+  </mat-card>
+  

@@ -9,36 +9,12 @@
       "phone": 9367778899
     },
     {
-      "id": 2,
-      "cid": 12,
-      "name": "ali",
-      "family": "amiri",
-      "email": "dsd@mmm.ir",
-      "phone": 9334455667
-    },
-    {
       "id": 3,
       "cid": 13,
       "name": "hamid",
       "family": "ghanbari",
       "email": "jjhjks@kk.ir",
       "phone": "9123456783"
-    },
-    {
-      "id": 4,
-      "cid": 14,
-      "name": "ahmad",
-      "family": "Alizadeh",
-      "email": "jjksdh@hhh.ir",
-      "phone": 9367891234
-    },
-    {
-      "id": 5,
-      "cid": 15,
-      "name": "vahid",
-      "family": "borhani",
-      "email": "mhhsgyu@jjjdh.ir",
-      "phone": 9129876543
     },
     {
       "id": 6,
@@ -63,14 +39,6 @@
       "email": "ssss@sss.ie",
       "phone": "9223456789",
       "id": 8
-    },
-    {
-      "cid": 10,
-      "name": "Dariyoosh",
-      "family": "hoseymi",
-      "email": "aaa.kkk@gmail.com",
-      "phone": "9153456789",
-      "id": 9
     }
   ]
 }
