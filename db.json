@@ -1,76 +1,20 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "cid": 11,
-      "name": "majid",
+      "cid": 10,
+      "name": "dina",
       "family": "bagheri",
-      "email": "majid@bagheri.ir",
-      "phone": 9367778899
-    },
-    {
-      "id": 3,
-      "cid": 13,
-      "name": "hamid",
-      "family": "ghanbari",
-      "email": "jjhjks@kk.ir",
-      "phone": "9123456783"
-    },
-    {
-      "id": 6,
-      "cid": 16,
-      "name": "Dina",
-      "family": "bagheri",
-      "email": "dina.jjjh@yahoo.ir",
-      "phone": 9361278899
-    },
-    {
-      "id": 7,
-      "cid": 17,
-      "name": "fereydoon",
-      "family": "koorei",
-      "email": "f.k@yahoo.ir",
-      "phone": 9124334433
+      "email": "dina96@bagheri.ir",
+      "phone": "9331278899",
+      "id": 7
     },
     {
       "cid": 10,
-      "name": "Reza",
-      "family": "zare",
-      "email": "ssss@sss.ie",
-      "phone": "9223456789",
+      "name": "majid",
+      "family": "bagheri",
+      "email": "majid_bagheri666@yahoo.com",
+      "phone": "9361278899",
       "id": 8
-    },
-    {
-      "cid": 10,
-      "name": "shahin",
-      "family": "gholami",
-      "email": "shahin.gholami@gmail.com",
-      "phone": "9123456789",
-      "id": 9
-    },
-    {
-      "cid": 10,
-      "name": "",
-      "family": "",
-      "email": "",
-      "phone": "",
-      "id": 10
-    },
-    {
-      "cid": 10,
-      "name": "majid",
-      "family": "majidi",
-      "email": "sddd@mmmm.ir",
-      "phone": "9123456789",
-      "id": 11
-    },
-    {
-      "cid": 10,
-      "name": "aaaa",
-      "family": "ccccx",
-      "email": "aaaa@bbbb.ir",
-      "phone": "11",
-      "id": 12
     }
   ]
 }

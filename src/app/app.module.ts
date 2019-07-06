@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsComponent, DialogContentExampleDialog } from './contacts/contacts.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ContactService } from './contact.service';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
-import { DeleteContactComponent, DialogContentExampleDialog } from './delete-contact/delete-contact.component';
+import { DeleteContactComponent} from './delete-contact/delete-contact.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +71,6 @@ import { DeleteContactComponent, DialogContentExampleDialog } from './delete-con
     useValue: { showError: true }
   }],
   bootstrap: [AppComponent],
-  entryComponents: [DeleteContactComponent, DialogContentExampleDialog]
+  entryComponents: [ContactsComponent, DialogContentExampleDialog]
 })
 export class AppModule { }

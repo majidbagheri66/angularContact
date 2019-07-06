@@ -3,10 +3,11 @@ import { ContactService } from '../contact.service';
 import { IContact } from '../contact.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
-import { Observable, timer } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-delete-contact',
@@ -19,14 +20,14 @@ export class DeleteContactComponent implements OnInit {
   myControl = new FormControl();
   filteredContact: Observable<string[]>;
   c_name: string;
-  c_family:string;
-  c_email:string;
-  c_id:number;
-  c_phone:number;
-  c_cid:number;
-  isselected:boolean;
+  c_family: string;
+  c_email: string;
+  c_id: number;
+  c_phone: number;
+  c_cid: number;
+  isselected: boolean;
 
-  constructor(private contactservice: ContactService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
+  constructor(private router: Router, private contactservice: ContactService, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit() {
     var res = [];
@@ -35,9 +36,7 @@ export class DeleteContactComponent implements OnInit {
         for (var x in Response) {
           Response.hasOwnProperty(x) && res.push(Response[x])
         }
-
         this.contactArray = res;
-
         this.filteredContact = this.myControl.valueChanges
           .pipe(
             startWith(''),
@@ -49,36 +48,33 @@ export class DeleteContactComponent implements OnInit {
   }
 
   displayFn(contact?: IContact): string | undefined {
-    return  contact ? contact.name + " " + contact.family : undefined;
+    return contact ? contact.name + " " + contact.family : undefined;
   }
-  
+
   private _filter(name: string): IContact[] {
-        const filterValue = name.toLowerCase();
+    const filterValue = name.toLowerCase();
     return this.contactArray.filter(contact => contact.name.toLowerCase().indexOf(filterValue) === 0);
   }
-  onSelect(event: MatAutocompleteSelectedEvent){
-   this.c_name= event.option.value.name;
-   this.c_family=event.option.value.family;
-   this.c_email= event.option.value.email;
-   this.c_phone=event.option.value.phone;
-   this.isselected= event.option.selected;
-   this.c_id=event.option.value.id;
-   this.c_cid=event.option.value.cid;
+  onSelect(event: MatAutocompleteSelectedEvent) {
+    this.c_name = event.option.value.name;
+    this.c_family = event.option.value.family;
+    this.c_email = event.option.value.email;
+    this.c_phone = event.option.value.phone;
+    this.isselected = event.option.selected;
+    this.c_id = event.option.value.id;
+    this.c_cid = event.option.value.cid;
   }
 
-  deletecontact(){
-    let id:number=this.c_id;
+  deletecontact() {
+    let id: number = this.c_id;
     this.contactservice.deletecontact(id).subscribe(
-      Response=>console.log(Response)
+      Response => console.log(Response)
     );
-    this._snackBar.open("Contact Deleted!","OK",{duration:3000});
-    setTimeout(() => {
-      location.reload();
-    }, 4000);
-    
+    this._snackBar.open("Contact Deleted!", "OK", { duration: 3000 });
+
+    this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+      this.router.navigate(["deletecontact"]));
   }
-
-
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog);
 
@@ -94,5 +90,5 @@ export class DeleteContactComponent implements OnInit {
   selector: 'dialog-content-example-dialog',
   templateUrl: 'dialog-content-example-dialog.html'
 })
-export class DialogContentExampleDialog {}
+export class DialogContentExampleDialog { }
 

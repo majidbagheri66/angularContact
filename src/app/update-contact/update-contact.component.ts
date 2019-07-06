@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { Observable, timer } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-contact',
@@ -25,7 +26,7 @@ export class UpdateContactComponent implements OnInit {
   c_cid:number;
   isselected:boolean;
 
-  constructor(private contactservice: ContactService, private _snackBar: MatSnackBar) { }
+  constructor(private router: Router, private contactservice: ContactService, private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     var res = [];
@@ -77,9 +78,8 @@ export class UpdateContactComponent implements OnInit {
       Response=>console.log(Response)
     );
     this._snackBar.open("Contact Updated!","OK",{duration:3000});
-    setTimeout(() => {
-      location.reload();
-    }, 3001);
-    
+    this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
+    this.router.navigate(["updatecontact"]));
+    this.ngOnInit();
   }
 }
