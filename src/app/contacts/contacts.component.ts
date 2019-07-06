@@ -27,7 +27,6 @@ Response=>this.contactArray=Response
     this.selectedContact = contact;
   }
 
-
   deletecontact() {
     this.contactservice.deletecontact(this.c_id).subscribe(
       Response => console.log(Response)
@@ -36,6 +35,7 @@ Response=>this.contactArray=Response
 
     this.router.navigateByUrl('', { skipLocationChange: true }).then(() =>
       this.router.navigate(["list"]));
+      this.ngOnInit();
   }
   openDialog(id:number) {
     this.c_id=id;

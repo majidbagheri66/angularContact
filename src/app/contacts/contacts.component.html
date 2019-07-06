@@ -1,11 +1,8 @@
 
-  <table style="width:100%">
-    <tr>
-      <td>
         <h2 class="mat-h2">Contacts List</h2>
 
-        <mat-card style="width: 300px">
-          <mat-action-list  *ngFor="let contact of contactArray">
+        <mat-card style="margin-right: 20px">
+          <!-- <mat-action-list  *ngFor="let contact of contactArray">
             <table>
               <tr>
                 <td style="width: 90%">
@@ -21,11 +18,32 @@
             </table>
           <mat-divider></mat-divider>
           </mat-action-list>
-        </mat-card>
-        
-      </td>
-      <td>
-        <app-contact-detail [contact]="selectedContact"></app-contact-detail>
-      </td>
-    </tr>
-  </table>
+         -->
+
+
+  <mat-accordion>
+      <mat-expansion-panel *ngFor="let contact of contactArray">
+        <mat-expansion-panel-header [class.selected]="contact === selectedContact" (click)="onSelect(contact)">
+          <mat-panel-title>
+            {{contact.name}} {{contact.family}}
+          </mat-panel-title>
+          <mat-panel-description>
+            {{contact.phone}}  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <mat-icon>account_circle</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <table>
+            <tr>
+              <td style="width: 90%">
+                  <app-contact-detail [contact]="selectedContact"></app-contact-detail>
+              </td>
+              <td style="width: 10%">
+                  <button mat-icon-button (click)="openDialog(contact.id)"><mat-icon matListIcon>delete</mat-icon></button>
+              </td>
+            </tr>
+          </table>
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card>

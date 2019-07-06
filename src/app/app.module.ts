@@ -30,6 +30,7 @@ import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
 import { ContactService } from './contact.service';
 import { UpdateContactComponent } from './update-contact/update-contact.component';
 import { DeleteContactComponent} from './delete-contact/delete-contact.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { DeleteContactComponent} from './delete-contact/delete-contact.component
     MatSnackBarModule,
     MatStepperModule,
     MatAutocompleteModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [ContactService, {
     provide: STEPPER_GLOBAL_OPTIONS,
