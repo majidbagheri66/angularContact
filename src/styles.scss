@@ -1,6 +1,5 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import '~@angular/material/theming';
-@import "../node_modules/ng2-slim-loading-bar/style.css";
 
 $custom-typography: mat-typography-config($font-family: '"Oswald", sans-serif;',
 $headline: mat-typography-level(36px, 52px, 700),

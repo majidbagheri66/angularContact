@@ -10,8 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 
-import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
-
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatListModule} from '@angular/material/list';
@@ -49,7 +47,6 @@ import { DeleteContactComponent} from './delete-contact/delete-contact.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SlimLoadingBarModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatListModule,
